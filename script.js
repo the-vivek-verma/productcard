@@ -14,7 +14,7 @@
 //     a.style.backgroundColor = "red";
 // });
 
-let body = document.querySelector('body');
+let body = document.querySelector('.header');
 let headTop = document.createElement('div');
 headTop.classList.add('container');
 
@@ -32,7 +32,7 @@ headerLeft.innerHTML = "<a href='/'><img src='./img/logo.png' alt='logo'></a>";
 
 let headerRight = document.createElement('div');
 headerRight.classList.add('header-right');
-headerRight.innerHTML = "<ul><li>Home</li><li>About</li><li>Contact</li></ul>";
+headerRight.innerHTML = "<ul><li>Home</li><li>About</li><li>Contact</li><li><a href='cart.html'>cart</a></li></ul>";
 headerRight.querySelectorAll('li').forEach(a =>{
     a.style.display = "inline-block";
     a.style.marginLeft = "20px";
@@ -72,28 +72,64 @@ let proCard = [
     }
 ]
 
-let container = document.createElement('div');
-container.classList.add('product_row');
-proCard.map(a =>{
-    let card = document.createElement('div');
-    card.classList.add('card');
-    let img = document.createElement('img');
-    img.setAttribute('src', a.proImage);
-    let info = document.createElement('div');
-    info.classList.add('info');
-    let name = document.createElement('h4');
-    name.innerText = a.proName;
-    let price = document.createElement('p');
-    price.innerText = a.proPrice;
-    let btn = document.createElement('a');
-    btn.setAttribute('href', a.proName);
-    btn.innerText = "Buy Now";
-    
-info.append(name, price);
-card.append(img, info, btn);
-container.append(card);
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-})
+let homeDiv = document.querySelector('.home-page');
+if(homeDiv){
+    let container = document.createElement('div');
+    container.classList.add('product_row');
+    proCard.map(a =>{
+        let card = document.createElement('div');
+        card.classList.add('card');
+        card.setAttribute('data-id', a.proId);
+        let img = document.createElement('img');
+        img.setAttribute('src', a.proImage);
+        let info = document.createElement('div');
+        info.classList.add('info');
+        let name = document.createElement('h4');
+        name.innerText = a.proName;
+        let price = document.createElement('p');
+        price.innerText = a.proPrice;
+        let btn = document.createElement('button');
+        btn.innerText = "Buy Now";
+
+        card.addEventListener("click", (e) =>{
+            if(e.target.tagName === "BUTTON"){
+                let closestCard = e.target.closest('.card');
+                let id = closestCard.getAttribute('data-id');
+                let productInfo = proCard.find(a => a.proId == id);
+                cart.push(productInfo);
+                localStorage.setItem("cart", JSON.stringify(cart));
+            }
+        })
+
+        info.append(name, price);
+        card.append(img, info, btn);
+        container.append(card);
+    })
+    homeDiv.append(container);
+}
+
+let cart_items = document.querySelector('.cart_items');
+cart.forEach(a =>{
+    let cartItem = document.createElement('div');
+    cartItem.classList.add('cart-item');
+    let imagrDiv = document.createElement('div');
+    imagrDiv.classList.add('cart-image');
+    let img_item = document.createElement('img');
+    img_item.setAttribute('src', a.proImage);
+    imagrDiv.append(img_item);
+    let infoDiv = document.createElement('div');
+    infoDiv.classList.add('cart-info');
+    let pName = document.createElement('h4');
+    pName.innerText = a.proName;
+    let pro_Price = document.createElement('p');
+    //let quantity = cart.filter(item => item.proId === a.proId).length;
+    pro_Price.innerText = "Per Each " + a.proPrice;
+    infoDiv.append(pName, pro_Price);
+    cartItem.append(imagrDiv, infoDiv);
+    cart_items.append(cartItem);
+    //let totalPrice = a.proPrice * quantity;
+});
 
 
-body.append(container);
