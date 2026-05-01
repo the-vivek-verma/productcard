@@ -66,7 +66,37 @@
     font-weight: bold;
     font-family: cursive;
 }
-
+.cart-section-inner {
+    display: flex;
+    gap: 30px;
+    margin: 40px 0px;
+}
+.cart_summry {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 40%;
+    border-radius: 10px;
+}
+.cart_summry .summry {
+    font-size: 25px;
+    color: #000;
+    font-family: cursive;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+.cart-total p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    font-family: cursive;
+}
+.cart-total {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+}
 </style>
 <body>
     
@@ -77,6 +107,13 @@
         <h1>Cart page</h1>
         <div class="cart-section-inner">
             <div class="cart_items">
+            </div>
+            <div class="cart_summry">
+                <h4 class="summry">Cart Summary</h4>
+                <div class="cart-total">
+                    <p>Total items: <span class="total_items">0</span></p>
+                    <p>Total price: <span class="total_price">$0</span></p>  
+                </div>
             </div>
         </div>
     </div>

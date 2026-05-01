@@ -32,7 +32,7 @@ headerLeft.innerHTML = "<a href='/'><img src='./img/logo.png' alt='logo'></a>";
 
 let headerRight = document.createElement('div');
 headerRight.classList.add('header-right');
-headerRight.innerHTML = "<ul><li>Home</li><li>About</li><li>Contact</li><li><a href='cart.html'>cart</a></li></ul>";
+headerRight.innerHTML = "<ul><li>Home</li><li>About</li><li><a href='users.html'>Users</a></li><li><a href='cart.html'>cart</a></li></ul>";
 headerRight.querySelectorAll('li').forEach(a =>{
     a.style.display = "inline-block";
     a.style.marginLeft = "20px";

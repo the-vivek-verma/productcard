@@ -71,20 +71,56 @@
     color: #000;
     text-decoration: none;
 }
+.user-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1300px;
+    margin: 50px auto;
+    gap: 30px;
+}
+.user-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+}
+.user-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 5px;
+}
+.user-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+}
+.user-top h2 {
+    font-size: 22px;
+}
+.user-top p {
+    color: red;
+}
 </style>
 
 <body>
     
     <div class="header">
+    </div>
 
-    </div>
-    <div class="home-page">
-    </div>
-    <div class="posts-section">
+    <div class="user-section">
         
     </div>
+    <from>
+        <input type="text" placeholder="Enter name" id="name">
+        <input type="email" placeholder="Enter email" id="email">
+        <button onclick="createPost()">Submit</button>
+    </from>
     
 
     <script src="script.js"></script>
+    <script src="fetch.js"></script>
 </body>
 </html>
