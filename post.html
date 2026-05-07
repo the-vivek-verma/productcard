@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="header">
+
+    </div>
+    <div class="post-section">
+        <div class="add-post-poup">
+            <div class="add-post-in">
+                <p class="Close-poup">&times;</p>
+                <form onsubmit="sendPost(event)">
+                    <h2>Add Post</h2>
+                    <input type="text" id="post-title" placeholder="Post Title">
+                    <textarea id="post-content" placeholder="Post Content"></textarea>
+                    <button type="submit">Add Post</button>
+                </form>
+            </div>
+        </div>
+        <div class="post-top">
+            <h1>Posts</h1>
+            <button id="add-post-btn">Add Post</button>
+        </div>
+        <div class="posts-items">
+
+        </div>
+    </div>
+
+    
+    <script src="script.js"></script>
+    <script src="post.js"></script>
+</body>
+</html>
